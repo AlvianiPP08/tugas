@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mk_jarkoms', function (Blueprint $table) {
-            $table->nim();
-            $table->int('sistem_tekinf');
-            $table->int('jarkom');
-            $table->int('prak_jarkom');
-            $table->int('sistem_digital');
-            $table->int('arsitektur_organisasikom');
-            $table->int('keamanan_informasi');
-            $table->int('jumlah');
+        Schema::create('tb_admin', function (Blueprint $table) {
+            $table->id('admin_id');
+            $table->string('name');
+            $table->string('adminname')->uique();
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mk_jarkoms');
+        Schema::dropIfExists('tb_admin');
     }
 };

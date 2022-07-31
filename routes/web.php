@@ -1,34 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MahasiswaController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/nilai', [App\Http\Controllers\MataKuliahController::class, 'index'])->name('nilai');
 Route::get('/hasil', [App\Http\Controllers\HasilController::class, 'index'])->name('hasil');
+// route::get('/register', [AdminController::class, 'registers'])->name('registers');
+Route::get('registers', [AdminController::class, 'registers'])->name('registers');
+Route::post('registers', [AdminController::class, 'registers_action'])->name('registers.action');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/nilaiadm', [App\Http\Controllers\MatkulController::class, 'index'])->name('nilaiadm');
+Route::get('/tambahmhs', [App\Http\Controllers\MatkulController::class, 'tambahmhs'])->name('tambahmhs');
+Route::post('/insertdata', [App\Http\Controllers\MatkulController::class, 'insertdata'])->name('insertdata');
 Route::get('insert','MahasiswaController@insertform');
 Route::post('create','MahasiswaController@insert');
 
 
 
+// Route::get('/', function(){
+//     return view('welcome');
+// })->name('home');
 
 Route::get('/logout', function () {
     \Auth::logout();

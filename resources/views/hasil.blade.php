@@ -2,7 +2,7 @@
 
 @section('content')
 
-<table class="table table-dark table-hover">
+<table class="table table-success table-striped">
   <thead>
     <tr>
       <th scope="col">Nim</th>
