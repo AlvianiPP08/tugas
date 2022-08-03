@@ -10,4 +10,5 @@ class AdminController extends Controller
         $data['title'] = 'Registers';
         return view('admin/registers', $data);
     }
+
 }

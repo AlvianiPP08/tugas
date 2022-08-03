@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class mk_rpl extends Model
 {
+	public $timestamps = false;
     protected $table ="mk_rpl";
 	protected $primarykey = "nim";
 	protected $fillable = [
-		'ddp', 'prak_ddp', 'prak_basdat', 'basdat', 'pbo', 'prak_pbo', 'rpl', 'badat_lanjut', 'pem_visual', 'analisa_perancangan_sis', 'tbo', 'jumlah'
+		'nim', 'ddp', 'prak_ddp', 'prak_basdat', 'basdat', 'pbo', 'prak_pbo', 'rpl', 'basdat_lanjut', 'pem_visual', 'analisa_perancangan_sis', 'tbo', 'jumlah'
 	];
 }

@@ -1,27 +1,107 @@
-@extends("layouts.app")
+@extends('layouts.app')
 
 @section('content')
+    {{-- @php
+    var_dump($hitung);
+    die();
+    @endphp --}}
 
-<table class="table table-success table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Nim</th>
-      <th scope="col">Nama Mahasiswa</th>
-      <th scope="col">Hasil Peminatan</th>
-	</tr>
-  </thead>
-  <tbody>
-  @forelse($hasil as $row)
-  <tr>
-      <th scope="row">{{$row->nim}}</th>
-      <td>{{ $row->nama_mhs }}</td>
-      <td>{{ $row->hasil_peminatan }}</td>
-    </tr>
-  @empty
-  <tr>
-      <th scope="row">Data belum ada</th>
-    </tr>
-  @endforelse
-  </tbody>
-</table>
+    @if (!empty($hasil))
+        @php
+            if ($hasil['rekomendasi'] == 'jarkom') {
+                $hasil['rekomendasi'] = 'Jaringan Komputer';
+            } elseif ($hasil['rekomendasi'] == 'rpl') {
+                $hasil['rekomendasi'] = 'Rekayasa Perangkat Lunak';
+            } elseif ($hasil['rekomendasi'] == 'kwc') {
+                $hasil['rekomendasi'] = 'Komputasi Web Cerdas';
+            }
+        @endphp
+        <table class="my-4 table table-success table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">NIM</th>
+                    <th scope="col">Nama Mahasiswa</th>
+                    <th scope="col">Rekomendasi Peminatan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-4">{{ $hasil['nim'] }}</td>
+                    <td class="col-4">{{ ucwords($hasil['nama']) }}</td>
+                    <td class="col-4">{{ ucwords($hasil['rekomendasi']) }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h5 class="text-center">Total Nilai Mata Kuliah</h5>
+        <table class="my-4 table table-success table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Total Nilai Jaringan Komputer</th>
+                    <th scope="col">Total Nilai Komputasi Web Cerdas</th>
+                    <th scope="col">Total Nilai Rekayasa Perangkat Lunak</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td class="col-4">{{ $hasil["total_jarkom"] }}</td>
+                  <td class="col-4">{{ $hasil["total_kwc"] }}</td>
+                  <td class="col-4">{{ $hasil["total_rpl"] }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h5 class="text-center">Hasil Perhitungan</h5>
+        <table class="my-4 table table-success table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" <?php
+                    if ($hasil['rekomendasi'] == 'Jaringan Komputer') {
+                        echo ' class="text-success font-weight-bold" ';
+                    } ?>>Nilai Jaringan Komputer</th>
+                    <th scope="col" <?php
+                    if ($hasil['rekomendasi'] == 'Komputasi Web Cerdas') {
+                        echo ' class="text-success font-weight-bold" ';
+                    } ?>>Nilai Komputasi Web Cerdas</th>
+                    <th scope="col" <?php
+                    if ($hasil['rekomendasi'] == 'Rekayasa Perangkat Lunak') {
+                        echo ' class="text-success font-weight-bold" ';
+                    } ?>>Nilai Rekayasa Perangkat Lunak</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-4 <?php
+                    if ($hasil['rekomendasi'] == 'Jaringan Komputer') {
+                        echo ' text-success font-weight-bold ';
+                    } ?>"> {{ $hasil['jarkom'] }} </td>
+                    <td class="col-4 font-weight-bold <?php
+                    if ($hasil['rekomendasi'] == 'Komputasi Web Cerdas') {
+                        echo ' text-success font-weight-bold';
+                    } ?>"> {{ $hasil['kwc'] }} </td>
+                    <td class="col-4 <?php
+                    if ($hasil['rekomendasi'] == 'Rekayasa Perangkat Lunak') {
+                        echo ' text-success font-weight-bold';
+                    } ?>"> {{ $hasil['rpl'] }} </td>
+                </tr>
+            </tbody>
+        </table>
+    @else
+        <div class="row text-center">
+            @php
+                if (!$jarkom) {
+                    echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai Jaringan Komputer</button>';
+                }
+                if (!$rpl) {
+                    echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai Rekayasa Perngkat Lunak</button>';
+                }
+                if (!$kwc) {
+                    echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai Komputasi Web Cerdas</button>';
+                }
+                if (!$profesi) {
+                    echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Pilih Profesi Kerja & Minat Bakat</button>';
+                }
+            @endphp
+        </div>
+    @endif
 @endsection

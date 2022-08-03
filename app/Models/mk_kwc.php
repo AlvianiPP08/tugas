@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class mk_KWC extends Model
 {
-    protected $table ="mk_kwc";
+	public $timestamps = false;
+	protected $table = "mk_kwc";
 	protected $primarykey = "nim";
 	protected $fillable = [
-		'data_mining', 'tekweb', 'prak_tekweb', 'sda', 'prak_sda', 'dasar_algoritma', 'jumlah'
+		'nim', 'data_mining', 'tekweb', 'prak_tekweb', 'sda', 'prak_sda', 'dasar_algoritma', 'jumlah'
 	];
 }

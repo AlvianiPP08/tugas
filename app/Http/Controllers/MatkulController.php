@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Models\mk_jarkom;
 use App\Models\mk_kwc;
 use App\Models\mk_rpl;
+use App\Models\pilihan_mahasiswa;
 
 class MatkulController extends Controller
 {
@@ -27,12 +30,59 @@ class MatkulController extends Controller
         ]);
     }
 
-    public function tambahmhs(){
-        return view('tambahdata');
+    public function tambah_kwc(){
+        $nim = Session::get('nim');
+        $kwc = DB::table('mk_kwc')->where('nim', $nim)->exists();
+      
+        return view('kwc', compact('kwc'));
     }
 
-    public function insertdata(Request $request){
+    public function tambah_jarkom(){
+        $nim = Session::get('nim');
+        $jarkom = DB::table('mk_jarkom')->where('nim', $nim)->exists();
+      
+        return view('jarkom', compact('jarkom'));
+    }
+
+    public function tambah_rpl(){
+        $nim = Session::get('nim');
+        $rpl = DB::table('mk_rpl')->where('nim', $nim)->exists();
+      
+        return view('rpl', compact('rpl'));
+    }
+
+    public function tambah_profesi(){
+        $nim = Session::get('nim');
+        $profesi = DB::table('pilihan_mahasiswa')->where('nim', $nim)->exists();
+      
+        return view('profesi', compact('profesi'));
+    }
+
+    public function insert_kwc(Request $request){
+        // dd($request->all());
+        mk_kwc::create($request->all());
+        
+        return redirect('halaman');
+    }
+
+    public function insert_jarkom(Request $request){
         // dd($request->all());
         mk_jarkom::create($request->all());
+
+        return redirect('halaman');
+    }
+
+    public function insert_rpl(Request $request){
+        // dd($request->all());
+        mk_rpl::create($request->all());
+
+        return redirect('halaman');
+    }
+
+    public function insert_profesi(Request $request){
+        // dd($request->all());
+        pilihan_mahasiswa::create($request->all());
+
+        return redirect('halaman');
     }
 }
