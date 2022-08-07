@@ -89,15 +89,11 @@
     @else
         <div class="row text-center">
             @php
+            // echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai</button>';
                 if (!$jarkom) {
-                    echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai Jaringan Komputer</button>';
+                    echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai</button>';
                 }
-                if (!$rpl) {
-                    echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai Rekayasa Perngkat Lunak</button>';
-                }
-                if (!$kwc) {
-                    echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai Komputasi Web Cerdas</button>';
-                }
+                
                 if (!$profesi) {
                     echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Pilih Profesi Kerja & Minat Bakat</button>';
                 }

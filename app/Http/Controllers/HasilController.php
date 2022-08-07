@@ -35,12 +35,23 @@ class HasilController extends Controller
 		$hasil["total_kwc"] = $nilai["kwc"];
 
 		$mhs = DB::table('hasil')->where('nim', $nim)->exists();
+		if ($hasil['rekomendasi'] == 'rpl') {
+			$rekomendasi = 'MK001';
+		}
+		else if ($hasil['rekomendasi'] == 'kwc') {
+			$rekomendasi = 'MK002';
+		}
+		else if ($hasil['rekomendasi'] == 'jarkom') {
+			$rekomendasi = 'MK003';
+		}
+		// dd($hasil);
+		// dd($hasil["rekomendasi"]);
 
 		if (!$mhs) {
 			$data_mhs = array(
 				'nim' => $nim,
 				'nama_mhs' => ucwords($hasil["nama"]),
-				'hasil_peminatan' => strtoupper($hasil['rekomendasi'])
+				'hasil_peminatan' => $rekomendasi
 			);
 			hasil::create($data_mhs);
 		}
@@ -56,7 +67,6 @@ class HasilController extends Controller
 		$rpl = DB::table('mk_rpl')->where('nim', $nim)->exists();
 		$kwc = DB::table('mk_kwc')->where('nim', $nim)->exists();
 		$profesi = DB::table('pilihan_mahasiswa')->where('nim', $nim)->exists();
-
 		if ($jarkom) {
 			if ($rpl) {
 				if ($kwc) {
@@ -140,11 +150,18 @@ class HasilController extends Controller
 
 	function normalisasi($nilai)
 	{
-		$pembagi_jarkom = 449;
-		$pembagi_rpl = 775;
-		$pembagi_kwc = 408;
-		$pembagi_profesi_kerja = 17;
-		$pembagi_minat_bakat = 9;
+		//MENGAMBIL NILAI KRITERIA DARI TABLE MASTER BIBIT
+		$jarkom = DB::table('bobot')->where('perhitungan', 'jarkom')->get('kriteria');
+		$rpl = DB::table('bobot')->where('perhitungan', 'rpl')->get('kriteria');
+		$kwc = DB::table('bobot')->where('perhitungan', 'kwc')->get('kriteria');
+		$profesikerja = DB::table('bobot')->where('perhitungan', 'profesikerja')->get('kriteria');
+		$minatbakat = DB::table('bobot')->where('perhitungan', 'minatbakat')->get('kriteria');
+
+		$pembagi_jarkom = $jarkom[0]->kriteria;
+		$pembagi_rpl = $rpl[0]->kriteria;
+		$pembagi_kwc = $kwc[0]->kriteria;
+		$pembagi_profesi_kerja = $profesikerja[0]->kriteria;
+		$pembagi_minat_bakat = $minatbakat[0]->kriteria;
 
 		// Perhitungan Normalisasi
 		$normalisasi_jarkom = number_format(($pembagi_jarkom / $nilai["jarkom"]), 9, '.', '');

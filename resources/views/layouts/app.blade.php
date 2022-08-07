@@ -87,40 +87,38 @@
                                                     aria-current="page" href="{{ route('halaman') }}">Halaman Utama</a>
                                             </li>
                                             @if (Auth::user()->name != 'ADMIN')
-                                            <li class="nav-item">
-                                                <a class="nav-link  {{ Request::RouteIs('hasil') ? 'active' : '' }}"
-                                                    aria-current="page" href="{{ route('hasil') }}">Hasil</a>
-                                            </li>
-                                            <li class="nav-item dropdown">
-                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
-                                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false" v-pre>
-                                                    Input
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-end"
-                                                    aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="{{ route('tambah_jarkom') }}">
-                                                        {{ __('Nilai Jaringan Komputer') }}
+                                                <li class="nav-item">
+                                                    <a class="nav-link  {{ Request::RouteIs('hasil') ? 'active' : '' }}"
+                                                        aria-current="page" href="{{ route('hasil') }}">Hasil</a>
+                                                </li>
+                                                {{-- <li class="nav-item">
+                                                    <a class="nav-link  {{ Request::RouteIs('nilai') ? 'active' : '' }}"
+                                                        aria-current="page" href="{{ route('nilai') }}">Input</a>
+                                                </li> --}}
+                                                <li class="nav-item dropdown">
+                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false" v-pre>
+                                                        Input
                                                     </a>
-                                                    <a class="dropdown-item" href="{{ route('tambah_rpl') }}">
-                                                        {{ __('Nilai Rekayasa Perangkat Lunak') }}
-                                                    </a>
-                                                    <a class="dropdown-item" href="{{ route('tambah_kwc') }}">
-                                                        {{ __('Nilai Komputasi Web Cerdas') }}
-                                                    </a>
-                                                    <a class="dropdown-item" href="{{ route('tambah_profesi') }}">
-                                                        {{ __('Profesi Minat & Bakat') }}
-                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end"
+                                                        aria-labelledby="navbarDropdown">
+                                                        <a class="dropdown-item" href="{{ route('nilai') }}">
+                                                            {{ __('Nilai') }}
+                                                        </a>
+                                                        <a class="dropdown-item" href="{{ route('tambah_profesi') }}">
+                                                            {{ __('Profesi Minat & Bakat') }}
+                                                        </a>
 
-                                                </div>
-                                            </li>
+                                                    </div>
+                                                </li>
                                             @else
-                                            <li class="nav-item">
-                                                <a class="nav-link  {{ Request::RouteIs('hasils') ? 'active' : '' }}"
-                                                    aria-current="page" href="{{ route('hasils') }}">Hasil</a>
-                                            </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link  {{ Request::RouteIs('hasils') ? 'active' : '' }}"
+                                                        aria-current="page" href="{{ route('hasils') }}">Hasil</a>
+                                                </li>
                                             @endif
-                                            
+
                                         </ul>
                                     </div>
 

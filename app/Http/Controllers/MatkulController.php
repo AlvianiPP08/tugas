@@ -37,11 +37,12 @@ class MatkulController extends Controller
         return view('kwc', compact('kwc'));
     }
 
-    public function tambah_jarkom(){
+    public function nilai(){
         $nim = Session::get('nim');
         $jarkom = DB::table('mk_jarkom')->where('nim', $nim)->exists();
+        // dd($hasil);
       
-        return view('jarkom', compact('jarkom'));
+        return view('input', compact('jarkom'));
     }
 
     public function tambah_rpl(){
@@ -59,24 +60,22 @@ class MatkulController extends Controller
     }
 
     public function insert_kwc(Request $request){
-        // dd($request->all());
         mk_kwc::create($request->all());
         
-        return redirect('halaman');
+        // return redirect('halaman');
     }
 
     public function insert_jarkom(Request $request){
         // dd($request->all());
         mk_jarkom::create($request->all());
 
-        return redirect('halaman');
+        // return redirect('halaman');
     }
 
     public function insert_rpl(Request $request){
-        // dd($request->all());
         mk_rpl::create($request->all());
 
-        return redirect('halaman');
+        // return redirect('halaman');
     }
 
     public function insert_profesi(Request $request){
