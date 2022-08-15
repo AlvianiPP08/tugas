@@ -20,13 +20,11 @@ class HasilController extends Controller
 		$nama_mhs = DB::table('users')->where('nim', $nim)->get('name');
 
 		$nilai = $this->nilai_mhs($nim);
-		// dd($nilai);
 
 		$normalisasi = $this->normalisasi($nilai);
 
 		//Array $hasil berisikan dengan hasil perhitungan ketiga Penjurusan matakuliah dan rekomendasi penjurusan
 		$hasil = $this->hitung($normalisasi);
-
 
 		$hasil["nim"] = $nim;
 		$hasil["nama"] = $nama_mhs[0]->name;
@@ -37,11 +35,9 @@ class HasilController extends Controller
 		$mhs = DB::table('hasil')->where('nim', $nim)->exists();
 		if ($hasil['rekomendasi'] == 'rpl') {
 			$rekomendasi = 'MK001';
-		}
-		else if ($hasil['rekomendasi'] == 'kwc') {
+		} else if ($hasil['rekomendasi'] == 'kwc') {
 			$rekomendasi = 'MK002';
-		}
-		else if ($hasil['rekomendasi'] == 'jarkom') {
+		} else if ($hasil['rekomendasi'] == 'jarkom') {
 			$rekomendasi = 'MK003';
 		}
 		// dd($hasil);
@@ -50,8 +46,8 @@ class HasilController extends Controller
 		if (!$mhs) {
 			$data_mhs = array(
 				'nim' => $nim,
-				'nama_mhs' => ucwords($hasil["nama"]),
-				'hasil_peminatan' => $rekomendasi
+				'nama' => ucwords($hasil["nama"]),
+				'kode_peminatan' => $rekomendasi
 			);
 			hasil::create($data_mhs);
 		}
@@ -60,35 +56,53 @@ class HasilController extends Controller
 		// return view('hasil', compact('hitung'));
 	}
 
-	function hasil()
+	// function hasil()
+	// {
+	// 	$nim = Session::get('nim');
+	// 	$jarkom = DB::table('mk_jarkom')->where('nim', $nim)->exists();
+	// 	$rpl = DB::table('mk_rpl')->where('nim', $nim)->exists();
+	// 	$kwc = DB::table('mk_kwc')->where('nim', $nim)->exists();
+	// 	$profesi = DB::table('pilihan_mahasiswa')->where('nim', $nim)->exists();
+	// 	if ($jarkom) {
+	// 		if ($rpl) {
+	// 			if ($kwc) {
+	// 				if ($profesi) {
+	// 					$hasil = $this->rekomendasi($nim);
+	// 					return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi', 'hasil'));
+	// 				} else {
+	// 					return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
+	// 				}
+	// 			} else {
+	// 				return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
+	// 			}
+	// 		} else {
+	// 			return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
+	// 		}
+	// 	} else {
+	// 		return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
+	// 	}
+	// 	// return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
+	// }
+
+	public function hasil()
 	{
 		$nim = Session::get('nim');
-		$jarkom = DB::table('mk_jarkom')->where('nim', $nim)->exists();
-		$rpl = DB::table('mk_rpl')->where('nim', $nim)->exists();
-		$kwc = DB::table('mk_kwc')->where('nim', $nim)->exists();
-		$profesi = DB::table('pilihan_mahasiswa')->where('nim', $nim)->exists();
-		if ($jarkom) {
-			if ($rpl) {
-				if ($kwc) {
-					if ($profesi) {
-						$hasil = $this->rekomendasi($nim);
-						return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi', 'hasil'));
-					} else {
-						return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
-					}
-				} else {
-					return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
-				}
+		$nilai = DB::table('nilai_matkul')->where('nim', $nim)->exists();
+		$profesi_minat = DB::table('pilihan_mahasiswa')->where('nim', $nim)->exists();
+
+		if ($nilai) {
+			if ($profesi_minat) {
+				$hasil = $this->rekomendasi($nim);
+				return view('hasil', compact('profesi_minat', 'hasil'));
 			} else {
-				return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
+				return view('hasil', compact('profesi_minat', 'hasil'));
 			}
-		} else {
-			return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
 		}
-		// return view('hasil', compact('jarkom', 'rpl', 'kwc', 'profesi'));
+		return view('hasil', compact('nilai', 'profesi_minat'));
 	}
 
-	function hasils() {
+	public function hasils()
+	{
 		$hasils = hasil::all();
 		return view('hasils', compact('hasils'));
 	}
@@ -122,46 +136,119 @@ class HasilController extends Controller
 	// 	// redirect ke hasil_page bawa 'hasil'
 	// }
 
+	// public function nilai_mhs($nim)
+	// {
+	// 	// Mengambil nilai mahasiswa untuk melakukan perhitungan
+	// 	$jarkom = DB::table('mk_jarkom')->where('nim', $nim)->get('jumlah');
+	// 	$rpl = DB::table('mk_rpl')->where('nim', $nim)->get('jumlah');
+	// 	$kwc = DB::table('mk_kwc')->where('nim', $nim)->get('jumlah');
+	// 	$profesi_kerja = DB::select(
+	// 		'SELECT nim, pk.nilai AS nilai_profesi, mb.nilai AS nilai_minat
+	// 		FROM pilihan_mahasiswa pm 
+	// 		JOIN profesi_kerja pk ON pm.pilihan_profesi = pk.id_profesi 
+	// 		JOIN minat_bakat mb ON pm.pilihan_minat_bakat = mb.id_minat
+	// 		WHERE nim = ' . $nim
+	// 	);
+
+	// 	$nilai = array(
+	// 		'jarkom' => $jarkom[0]->jumlah,
+	// 		'rpl' => $rpl[0]->jumlah,
+	// 		'kwc' => $kwc[0]->jumlah,
+	// 		'profesi_kerja' => $profesi_kerja[0]->nilai_profesi,
+	// 		'minat_bakat' => $profesi_kerja[0]->nilai_minat,
+	// 	);
+	// 	// dd($nilai);
+
+	// 	return $nilai;
+	// }
+
 	public function nilai_mhs($nim)
 	{
-		// Mengambil nilai mahasiswa untuk melakukan perhitungan
-		$jarkom = DB::table('mk_jarkom')->where('nim', $nim)->get('jumlah');
-		$rpl = DB::table('mk_rpl')->where('nim', $nim)->get('jumlah');
-		$kwc = DB::table('mk_kwc')->where('nim', $nim)->get('jumlah');
-		$profesi_kerja = DB::select(
-			'SELECT nim, pk.nilai AS nilai_profesi, mb.nilai AS nilai_minat
+		$rpl = DB::select(
+			'SELECT sum(nilai) AS nilai_rpl
+			FROM nilai_matkul
+			WHERE kode_peminatan = "MK001" AND nim = "' . $nim . '"'
+		);
+		$kwc = DB::select(
+			'SELECT sum(nilai) AS nilai_kwc
+			FROM nilai_matkul
+			WHERE kode_peminatan = "MK002" AND nim = "' . $nim . '"'
+		);
+		$jarkom = DB::select(
+			'SELECT sum(nilai) AS nilai_jarkom
+			FROM nilai_matkul
+			WHERE kode_peminatan = "MK003" AND nim = "' . $nim . '"'
+		);
+		$profesi_minat = DB::select(
+			'SELECT pk.nilai AS nilai_profesi, mb.nilai AS nilai_minat
 			FROM pilihan_mahasiswa pm 
-			JOIN profesi_kerja pk ON pm.pilihan_profesi = pk.id_profesi 
-			JOIN minat_bakat mb ON pm.pilihan_minat_bakat = mb.id_minat
-			WHERE nim = ' . $nim
+			JOIN profesi_kerja pk ON pm.profesi_kerja = pk.id_profesi 
+			JOIN minat_bakat mb ON pm.minat_bakat = mb.id_minat 
+			WHERE nim = "' . $nim . '"'
 		);
 
+
 		$nilai = array(
-			'jarkom' => $jarkom[0]->jumlah,
-			'rpl' => $rpl[0]->jumlah,
-			'kwc' => $kwc[0]->jumlah,
-			'profesi_kerja' => $profesi_kerja[0]->nilai_profesi,
-			'minat_bakat' => $profesi_kerja[0]->nilai_minat,
+			'jarkom' => $jarkom[0]->nilai_jarkom,
+			'rpl' => $rpl[0]->nilai_rpl,
+			'kwc' => $kwc[0]->nilai_kwc,
+			'profesi_kerja' => $profesi_minat[0]->nilai_profesi,
+			'minat_bakat' => $profesi_minat[0]->nilai_minat,
 		);
-		// dd($nilai);
 
 		return $nilai;
 	}
 
+	// function normalisasi($nilai)
+	// {
+	// 	//MENGAMBIL NILAI KRITERIA DARI TABLE MASTER BIBIT
+	// 	$jarkom = DB::table('bobot')->where('perhitungan', 'jarkom')->get('kriteria');
+	// 	$rpl = DB::table('bobot')->where('perhitungan', 'rpl')->get('kriteria');
+	// 	$kwc = DB::table('bobot')->where('perhitungan', 'kwc')->get('kriteria');
+	// 	$profesikerja = DB::table('bobot')->where('perhitungan', 'profesikerja')->get('kriteria');
+	// 	$minatbakat = DB::table('bobot')->where('perhitungan', 'minatbakat')->get('kriteria');
+
+	// 	$pembagi_jarkom = $jarkom[0]->kriteria;
+	// 	$pembagi_rpl = $rpl[0]->kriteria;
+	// 	$pembagi_kwc = $kwc[0]->kriteria;
+	// 	$pembagi_profesi_kerja = $profesikerja[0]->kriteria;
+	// 	$pembagi_minat_bakat = $minatbakat[0]->kriteria;
+
+	// 	// Perhitungan Normalisasi
+	// 	$normalisasi_jarkom = number_format(($pembagi_jarkom / $nilai["jarkom"]), 9, '.', '');
+	// 	$normalisasi_rpl = number_format(($pembagi_rpl / $nilai["rpl"]), 9, '.', '');
+	// 	$normalisasi_kwc = number_format(($pembagi_kwc / $nilai["kwc"]), 9, '.', '');
+
+	// 	$normalisasi_profesi_kerja = number_format(($pembagi_profesi_kerja / $nilai["profesi_kerja"]), 9, '.', '');
+	// 	$normalisasi_minat_bakat = number_format(($pembagi_minat_bakat / $nilai["minat_bakat"]), 9, '.', '');
+
+
+	// 	$normalisasi = array(
+	// 		'jarkom' => $normalisasi_jarkom,
+	// 		'rpl' => $normalisasi_rpl,
+	// 		'kwc' => $normalisasi_kwc,
+	// 		'profesi_kerja' => $normalisasi_profesi_kerja,
+	// 		'minat_bakat' => $normalisasi_minat_bakat
+	// 	);
+	// 	// dd($normalisasi);
+
+	// 	return $normalisasi;
+	// }
+
 	function normalisasi($nilai)
 	{
 		//MENGAMBIL NILAI KRITERIA DARI TABLE MASTER BIBIT
-		$jarkom = DB::table('bobot')->where('perhitungan', 'jarkom')->get('kriteria');
-		$rpl = DB::table('bobot')->where('perhitungan', 'rpl')->get('kriteria');
-		$kwc = DB::table('bobot')->where('perhitungan', 'kwc')->get('kriteria');
-		$profesikerja = DB::table('bobot')->where('perhitungan', 'profesikerja')->get('kriteria');
-		$minatbakat = DB::table('bobot')->where('perhitungan', 'minatbakat')->get('kriteria');
+		$rpl = DB::table('peminatan')->where('kode_peminatan', 'MK001')->get('hasil');
+		$kwc = DB::table('peminatan')->where('kode_peminatan', 'MK002')->get('hasil');
+		$jarkom = DB::table('peminatan')->where('kode_peminatan', 'MK003')->get('hasil');
+		$profesikerja = DB::table('klasifikasi')->where('kode_klasifikasi', 'PP')->get('nilai');
+		$minatbakat = DB::table('klasifikasi')->where('kode_klasifikasi', 'MM')->get('nilai');
 
-		$pembagi_jarkom = $jarkom[0]->kriteria;
-		$pembagi_rpl = $rpl[0]->kriteria;
-		$pembagi_kwc = $kwc[0]->kriteria;
-		$pembagi_profesi_kerja = $profesikerja[0]->kriteria;
-		$pembagi_minat_bakat = $minatbakat[0]->kriteria;
+		$pembagi_jarkom = $jarkom[0]->hasil;
+		$pembagi_rpl = $rpl[0]->hasil;
+		$pembagi_kwc = $kwc[0]->hasil;
+		$pembagi_profesi_kerja = $profesikerja[0]->nilai;
+		$pembagi_minat_bakat = $minatbakat[0]->nilai;
 
 		// Perhitungan Normalisasi
 		$normalisasi_jarkom = number_format(($pembagi_jarkom / $nilai["jarkom"]), 9, '.', '');
@@ -183,6 +270,8 @@ class HasilController extends Controller
 
 		return $normalisasi;
 	}
+
+
 
 	function hitung($normalisasi)
 	{

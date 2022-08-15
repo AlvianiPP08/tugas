@@ -34,7 +34,7 @@
                             <tr class="my-4">
                                 <label for="exampleInputEmail1" class="form-label">Profesi Kerja dan Karir</label>
                                 <td>
-                                    <select name="pilihan_profesi" class="form-control">
+                                    <select name="profesi_kerja" class="form-control">
                                         <option value="null">Pemilihan Profesi Kerja dan Karir</option>
                                         <option value="P001">Computer Network/Data Engineer</option>
                                         <option value="P002">Database Engineer / Database Administrator</option>
@@ -48,7 +48,7 @@
                             <tr class="my-4">
                                 <label for="exampleInputEmail1" class="form-label">Profesi Minat dan Bakat</label>
                                 <td>
-                                    <select name="pilihan_minat_bakat" class="form-control">
+                                    <select name="minat_bakat" class="form-control">
                                         <option value="null">Pemilihan Minat dan Bakat</option>
                                         <option value="M001">Administrasi Sistem Jaringan</option>
                                         <option value="M002">Analisis Database Server</option>
@@ -66,11 +66,12 @@
                 </div>
             </div>
         @else
-
-            <body>
-                <div class="text-center row justify-content-center">
-                    <h5>Anda Sudah Pilih Profesi Kerja & Minat Bakat</h5>
-                </div>
-            </body>
+            @php
+                echo '<body>
+                    <div class="text-center row justify-content-center">
+                        <button type="button" class="my-3 btn btn-success btn-lg" disabled>Anda Sudah Input Profesi Kerja & Minat Bakat</button>
+                    </div>
+                </body>';
+            @endphp
     @endif
 @endsection

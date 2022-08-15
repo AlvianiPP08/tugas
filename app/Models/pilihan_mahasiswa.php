@@ -11,6 +11,6 @@ class pilihan_mahasiswa extends Model
     protected $table ="pilihan_mahasiswa";
 	protected $primarykey = "nim";
 	protected $fillable = [
-		'nim', 'pilihan_profesi', 'pilihan_minat_bakat'
+		'nim', 'profesi_kerja', 'minat_bakat'
 	];
 }

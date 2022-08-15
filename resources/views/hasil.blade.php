@@ -90,11 +90,11 @@
         <div class="row text-center">
             @php
             // echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai</button>';
-                if (!$jarkom) {
+                if (!$nilai) {
                     echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Input Nilai</button>';
                 }
                 
-                if (!$profesi) {
+                if (!$profesi_minat) {
                     echo '<button type="button" class="my-3 btn btn-danger btn-lg" disabled>Anda Belum Pilih Profesi Kerja & Minat Bakat</button>';
                 }
             @endphp

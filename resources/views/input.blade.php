@@ -35,43 +35,43 @@
 
                             <div class="my-3">
                                 <label for="exampleInputPassword1" class="form-label">Sistem Teknologi Informasi</label>
-                                <input type="text" name="sistem_tekinf" class="form-control"
+                                <input type="text" name="INF11023" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="sti">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Jaringan Komputer</label>
-                                <input type="text" name="jarkom" class="form-control"
+                                <input type="text" name="INF12033" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="jk">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Praktikum Jaringan Komputer</label>
-                                <input type="text" name="prak_jarkom" class="form-control"
+                                <input type="text" name="INF12034" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="pjk">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Sistem Digital</label>
-                                <input type="text" name="sistem_digital" class="form-control"
+                                <input type="text" name="IFS12013" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="sd">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Arsitektur Organisasi Komputer</label>
-                                <input type="text" name="arsitektur_organisasikom" class="form-control"
+                                <input type="text" name="IFS13013" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="aok">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Keamanan Informasi</label>
-                                <input type="text" name="keamanan_informasi" class="form-control"
+                                <input type="text" name="INF13033" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="ki">
                             </div>
 
-                            <div class="mb-3" hidden>
+                            {{-- <div class="mb-3" hidden>
                                 <label for="exampleInputPassword1" class="form-label">Jumlah</label>
                                 <input type="text" name="jumlah" class="form-control" id="jumlah_jarkom" value="">
-                            </div>
+                            </div> --}}
 
                         </form>
                     </div>
@@ -87,83 +87,83 @@
                             </div>
                             <div class="my-3">
                                 <label for="exampleInputPassword1" class="form-label">Dasar-dasar Pemrograman</label>
-                                <input type="text" name="ddp" class="form-control"
+                                <input type="text" name="INF11013" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="ddp">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Praktikum Dasar-dasar
                                     Pemrograman</label>
-                                <input type="text" name="prak_ddp" class="form-control"
+                                <input type="text" name="INF11011" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="pddp">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Basis Data</label>
-                                <input type="text" name="basdat" class="form-control"
+                                <input type="text" name="INF12023" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="bd">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Praktikum Basis Data</label>
-                                <input type="text" name="prak_basdat" class="form-control"
+                                <input type="text" name="INF12021" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="pbd">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Basis Data Lanjut</label>
-                                <input type="text" name="basdat_lanjut" class="form-control"
+                                <input type="text" name="IFS13033" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="bdl">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Pemrograman Berbasis Objek</label>
-                                <input type="text" name="pbo" class="form-control"
+                                <input type="text" name="INF3013" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="pbo">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Praktikum Pemrograman Berbasis
                                     Objek</label>
-                                <input type="text" name="prak_pbo" class="form-control"
+                                <input type="text" name="INF13011" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="ppbo">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Rekayasa Perangkat Lunak</label>
-                                <input type="text" name="rpl" class="form-control"
+                                <input type="text" name="INF13023" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="rpl">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Pemrograman Visual</label>
-                                <input type="text" name="pem_visual" class="form-control"
+                                <input type="text" name="FS14023" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="pv">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Analisa Perancangan Sistem</label>
-                                <input type="text" name="analisa_perancangan_sis" class="form-control"
+                                <input type="text" name="INF14013" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="aps">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Teori Bahasa & Otomata</label>
-                                <input type="text" name="tbo" class="form-control"
+                                <input type="text" name="IFS14053" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="tbo">
                             </div>
 
-                            <div class="mb-3" hidden>
+                            {{-- <div class="mb-3" hidden>
                                 <label for="exampleInputPassword1" class="form-label">Jumlah</label>
                                 <input type="text" name="jumlah" class="form-control" id="jumlah_rpl"
                                     value="">
-                            </div>
+                            </div> --}}
                             <button type="button" onclick="calculate();" class="btn btn-primary">Submit</button>
                             {{-- <button type="submit" onclick="calculate();" class="btn btn-primary">Submit</button> --}}
                         </form>
                     </div>
 
                     <div class="col-4">
-                        <div class="row justify-content-center">Nilai Rekayasa Perangkat Lunak</div>
+                        <div class="row justify-content-center">Nilai Komputasi Web Cerdas</div>
                         <form id="form_kwc">
                             @csrf
                             <div class="mb-3" hidden>
@@ -174,57 +174,58 @@
 
                             <div class="my-3">
                                 <label for="exampleInputPassword1" class="form-label">Data Mining</label>
-                                <input type="text" name="data_mining" class="form-control"
+                                <input type="text" name="IFS14013" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="dm">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Teknologi Web</label>
-                                <input type="text" name="tekweb" class="form-control"
+                                <input type="text" name="IFS14033" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="tw">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Praktikum Teknologi Web</label>
-                                <input type="text" name="prak_tekweb" class="form-control"
+                                <input type="text" name="IFS14041" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="ptw">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Struktur Data dan Algoritma</label>
-                                <input type="text" name="sda" class="form-control"
+                                <input type="text" name="INF12013" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="sda">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Praktikum Struktur Data dan
                                     Algoritma</label>
-                                <input type="text" name="prak_sda" class="form-control"
+                                <input type="text" name="INF12011" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="psda">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Dasar Algoritma</label>
-                                <input type="text" name="dasar_algoritma" class="form-control"
+                                <input type="text" name="IFS13022" class="form-control"
                                     onkeypress="RestrictFirstZero(event); return isNumber(event);" id="da">
                             </div>
 
-                            <div class="mb-3" hidden>
+                            {{-- <div class="mb-3" hidden>
                                 <label for="exampleInputPassword1" class="form-label">Jumlah</label>
                                 <input type="text" name="jumlah" class="form-control" id="jumlah_kwc" value=""
                                     readonly>
-                            </div>
+                            </div> --}}
 
                         </form>
                     </div>
                 </div>
             </div>
         @else
-
-            <body>
+            @php
+                echo '<body>
                 <div class="text-center row justify-content-center">
-                    <h5>Anda Sudah Input Nilai</h5>
+                    <button type="button" class="my-3 btn btn-success btn-lg" disabled>Anda Sudah Input Nilai</button>
                 </div>
-            </body>
+            </body>'
+            @endphp
     @endif
 @endsection
 
@@ -250,40 +251,40 @@
 
     //MENGHITUNG JUMLAH SEBELUM DATA NILAI DI SUBMIT
     function calculate() {
-        var sti = parseInt(document.getElementById("sti").value);
-        var jk = parseInt(document.getElementById("jk").value);
-        var pjk = parseInt(document.getElementById("pjk").value);
-        var sd = parseInt(document.getElementById("sd").value);
-        var aok = parseInt(document.getElementById("aok").value);
-        var ki = parseInt(document.getElementById("ki").value);
+        // var sti = parseInt(document.getElementById("sti").value);
+        // var jk = parseInt(document.getElementById("jk").value);
+        // var pjk = parseInt(document.getElementById("pjk").value);
+        // var sd = parseInt(document.getElementById("sd").value);
+        // var aok = parseInt(document.getElementById("aok").value);
+        // var ki = parseInt(document.getElementById("ki").value);
 
-        var total_jarkom = sti + jk + pjk + sd + aok + ki;
-        document.getElementById("jumlah_jarkom").value = total_jarkom;
+        // var total_jarkom = sti + jk + pjk + sd + aok + ki;
+        // document.getElementById("jumlah_jarkom").value = total_jarkom;
 
-        var ddp = parseInt(document.getElementById("ddp").value);
-        var pddp = parseInt(document.getElementById("pddp").value);
-        var bd = parseInt(document.getElementById("bd").value);
-        var pbd = parseInt(document.getElementById("pbd").value);
-        var bdl = parseInt(document.getElementById("bdl").value);
-        var pbo = parseInt(document.getElementById("pbo").value);
-        var ppbo = parseInt(document.getElementById("ppbo").value);
-        var rpl = parseInt(document.getElementById("rpl").value);
-        var pv = parseInt(document.getElementById("pv").value);
-        var aps = parseInt(document.getElementById("aps").value);
-        var tbo = parseInt(document.getElementById("tbo").value);
+        // var ddp = parseInt(document.getElementById("ddp").value);
+        // var pddp = parseInt(document.getElementById("pddp").value);
+        // var bd = parseInt(document.getElementById("bd").value);
+        // var pbd = parseInt(document.getElementById("pbd").value);
+        // var bdl = parseInt(document.getElementById("bdl").value);
+        // var pbo = parseInt(document.getElementById("pbo").value);
+        // var ppbo = parseInt(document.getElementById("ppbo").value);
+        // var rpl = parseInt(document.getElementById("rpl").value);
+        // var pv = parseInt(document.getElementById("pv").value);
+        // var aps = parseInt(document.getElementById("aps").value);
+        // var tbo = parseInt(document.getElementById("tbo").value);
 
-        var total_rpl = ddp + pddp + bd + pbd + bdl + pbo + ppbo + rpl + pv + aps + tbo;
-        document.getElementById("jumlah_rpl").value = total_rpl;
+        // var total_rpl = ddp + pddp + bd + pbd + bdl + pbo + ppbo + rpl + pv + aps + tbo;
+        // document.getElementById("jumlah_rpl").value = total_rpl;
 
-        var dm = parseInt(document.getElementById("dm").value);
-        var tw = parseInt(document.getElementById("tw").value);
-        var ptw = parseInt(document.getElementById("ptw").value);
-        var sda = parseInt(document.getElementById("sda").value);
-        var psda = parseInt(document.getElementById("psda").value);
-        var da = parseInt(document.getElementById("da").value);
+        // var dm = parseInt(document.getElementById("dm").value);
+        // var tw = parseInt(document.getElementById("tw").value);
+        // var ptw = parseInt(document.getElementById("ptw").value);
+        // var sda = parseInt(document.getElementById("sda").value);
+        // var psda = parseInt(document.getElementById("psda").value);
+        // var da = parseInt(document.getElementById("da").value);
 
-        var total_kwc = dm + tw + ptw + sda + psda + da;
-        document.getElementById("jumlah_kwc").value = total_kwc;
+        // var total_kwc = dm + tw + ptw + sda + psda + da;
+        // document.getElementById("jumlah_kwc").value = total_kwc;
 
         var form_jarkom = document.getElementById('form_jarkom');
         var jarkom = new FormData(form_jarkom);
