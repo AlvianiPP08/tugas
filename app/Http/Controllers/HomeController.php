@@ -26,6 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         Session::put('nim', Auth::user()->nim);
-        return view('halaman');
+        if (Auth::user()->name == 'ADMIN') {
+            return redirect('/hasils');
+        }
+        return redirect('/halaman');
     }
 }

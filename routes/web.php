@@ -9,15 +9,17 @@ use Illuminate\Support\Facades\Session;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HasilController::class, 'hasil'])->name('hasil');
+// Route::get('/home', [App\Http\Controllers\HasilController::class, 'hasil'])->name('halaman');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('halaman');
 // Route::get('/nilai', [App\Http\Controllers\MataKuliahController::class, 'index'])->name('nilai');
 Route::get('/hasil', [App\Http\Controllers\HasilController::class, 'hasil'])->name('hasil');
+Route::get('/halaman', [App\Http\Controllers\HasilController::class, 'hasil'])->name('halaman');
 Route::get('/hasils', [App\Http\Controllers\HasilController::class, 'hasils'])->name('hasils');
 Route::post('/rekomendasi', [App\Http\Controllers\HasilController::class, 'rekomendasi'])->name('rekomendasi');
 // route::get('/register', [AdminController::class, 'registers'])->name('registers');
 Route::get('registers', [AdminController::class, 'registers'])->name('registers');
 Route::post('registers', [AdminController::class, 'registers_action'])->name('registers_action');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/nilaiadm', [App\Http\Controllers\MatkulController::class, 'index'])->name('nilaiadm');
 
 // Routes untuk menambah nilai di masing-masing penjurusan dan profesi minat bakat
@@ -42,11 +44,16 @@ Route::post('create','MahasiswaController@insert');
 Route::get('/logout', function () {
     Auth::logout();
     Session::flush();
-    return redirect ("/home");
+    return redirect ("/login");
 });
 
-Route::get('/halaman', function () {
-    return view('halaman');
+Route::get('/', function () {
+    if (!empty(Session::get('nim'))) {
+        return view('halaman');
+    } else {
+        return redirect ("/login");
+    }
+    
 })->name('halaman');
 
 // Route::get('/nilai', function () {

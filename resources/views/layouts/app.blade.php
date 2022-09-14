@@ -82,15 +82,15 @@
                                     </button>
                                     <div class="collapse navbar-collapse" id="navbarNav">
                                         <ul class="navbar-nav">
-                                            <li class="nav-item">
-                                                <a class="nav-link  {{ Request::RouteIs('halaman') ? 'active' : '' }}"
-                                                    aria-current="page" href="{{ route('halaman') }}">Halaman Utama</a>
-                                            </li>
                                             @if (Auth::user()->name != 'ADMIN')
                                                 <li class="nav-item">
+                                                    <a class="nav-link  {{ Request::RouteIs('halaman') ? 'active' : '' }}"
+                                                        aria-current="page" href="{{ route('halaman') }}">Halaman Utama</a>
+                                                </li>
+                                                {{-- <li class="nav-item">
                                                     <a class="nav-link  {{ Request::RouteIs('hasil') ? 'active' : '' }}"
                                                         aria-current="page" href="{{ route('hasil') }}">Hasil</a>
-                                                </li>
+                                                </li> --}}
                                                 {{-- <li class="nav-item">
                                                     <a class="nav-link  {{ Request::RouteIs('nilai') ? 'active' : '' }}"
                                                         aria-current="page" href="{{ route('nilai') }}">Input</a>

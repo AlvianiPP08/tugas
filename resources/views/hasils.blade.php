@@ -15,8 +15,14 @@
                 @foreach ($hasils as $hasil)
                     <tr>
                         <th scope="row">{{ $hasil->nim }}</th>
-                        <td>{{ $hasil->nama_mhs }}</td>
-                        <td>{{ $hasil->hasil_peminatan }}</td>
+                        <td>{{ $hasil->nama }}</td>
+                        @if ($hasil->kode_peminatan == 'MK001')
+                            <td>Rekayasa Perangkat Lunak</td>
+                        @elseif ($hasil->kode_peminatan == 'MK002')
+                            <td>Komputasi Web Cerdas</td>
+                        @elseif ($hasil->kode_peminatan == 'MK003')
+                            <td>Jaringan Komputer</td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
