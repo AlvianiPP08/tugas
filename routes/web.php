@@ -14,7 +14,7 @@ Route::get('/', [App\Http\Controllers\HasilController::class, 'hasil'])->name('h
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('halaman');
 // Route::get('/nilai', [App\Http\Controllers\MataKuliahController::class, 'index'])->name('nilai');
 Route::get('/hasil', [App\Http\Controllers\HasilController::class, 'hasil'])->name('hasil');
-Route::get('/halaman', [App\Http\Controllers\HasilController::class, 'hasil'])->name('halaman');
+Route::get('/halaman', [App\Http\Controllers\HomeController::class, 'index'])->name('halaman');
 Route::get('/hasils', [App\Http\Controllers\HasilController::class, 'hasils'])->name('hasils');
 Route::post('/rekomendasi', [App\Http\Controllers\HasilController::class, 'rekomendasi'])->name('rekomendasi');
 // route::get('/register', [AdminController::class, 'registers'])->name('registers');
