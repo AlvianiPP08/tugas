@@ -30,7 +30,9 @@
                 salah satu
                 pemintan mata kuliah yang ada di program studi Informatika UPI Y.A.I yang menyediakan mata
                 kuliah untuk
-                membantu mahasiswa mendalami bakat mereka seperti : sistem terdistribusi, teknik komperesi, ..
+                membantu mahasiswa mendalami bakat mereka seperti : sistem terdistribusi, teknik komperesi, teknologi Nirkabel dan aplikasi, 
+                keamanan informasi lanjut, komputasi paralel, pengembangan & pengelolaan jaringan, komputasi grid,
+                pemograman jaringan, dan sistem informasi geografis
             </p>
         </div>
     </div>

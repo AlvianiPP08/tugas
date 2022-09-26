@@ -14,7 +14,7 @@
     @if (!$jarkom)
 
         <body>
-            <h1 class="text-center mb-4">Tambah Nilai Matakuliah Jaringan Komputer</h1>
+            <h1 class="text-center mb-4">Tambah Nilai Matakuliah</h1>
             {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
             </script> --}}
@@ -25,7 +25,7 @@
                     <div class="col-4">
                         {{-- <form action="/insert_jarkom" method="POST" enctype="multipart/form-data"> --}}
                         <form id="form_jarkom">
-                            <div class="row justify-content-center">Nilai Jaringan Komputer</div>
+                            <!-- <div class="row justify-content-center">Nilai Jaringan Komputer</div> -->
                             @csrf
                             <div class="mb-3" hidden>
                                 <label for="exampleInputEmail1" class="form-label">Nim</label>
@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="col-4">
-                        <div class="row justify-content-center">Nilai Rekayasa Perangkat Lunak</div>
+                        <!-- <div class="row justify-content-center">Nilai Rekayasa Perangkat Lunak</div> -->
                         <form id="form_rpl">
                             @csrf
                             <div class="mb-3" hidden>
@@ -163,7 +163,7 @@
                     </div>
 
                     <div class="col-4">
-                        <div class="row justify-content-center">Nilai Komputasi Web Cerdas</div>
+                        <!-- <div class="row justify-content-center">Nilai Komputasi Web Cerdas</div> -->
                         <form id="form_kwc">
                             @csrf
                             <div class="mb-3" hidden>
